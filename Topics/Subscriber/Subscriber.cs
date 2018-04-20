@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -7,8 +8,8 @@ namespace Subscriber
 {
     class Subscriber
     {
-        private const string ExchangeName = "direct";
-        private const string ExchangeType = "direct";
+        private const string ExchangeName = "topic";
+        private const string ExchangeType = "topic";
 
         public enum PriorityEnum
         {
@@ -17,7 +18,26 @@ namespace Subscriber
             High
         }
 
-        private static readonly PriorityEnum[] Priority = { PriorityEnum.Normal, PriorityEnum.Low };
+        public enum UrgencyEnum
+        {
+            Urgent,
+            NonUrgent
+        }
+
+        public enum BindingKey
+        {
+            [Description("*")]
+            Star,
+            [Description("#")]
+            Hash
+        }
+
+        private static readonly string[] BindingKeys =
+        {
+            $"{UrgencyEnum.Urgent}.{BindingKey.Star.GetDescription()}",
+            $"{BindingKey.Star.GetDescription()}.{PriorityEnum.High}"
+            //$"{BindingKey.Hash.GetDescription()}"
+        };
 
         static void Main()
         {
@@ -38,11 +58,11 @@ namespace Subscriber
 
                         var queueName = channel.QueueDeclare().QueueName;
 
-                        foreach (var priority in Priority)
+                        foreach (var bindingKey in BindingKeys)
                         {
                             channel.QueueBind(queue: queueName,
                                         exchange: ExchangeName,
-                                        routingKey: priority.ToString());
+                                        routingKey: bindingKey);
                         }
 
                         Console.WriteLine(" [*] Waiting for messages.");

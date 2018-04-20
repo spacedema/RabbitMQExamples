@@ -8,7 +8,7 @@ namespace Consumer
 {
     internal class Receive
     {
-        const string Queue = "task_queue3";
+        const string QueueName = "task_queue3";
 
         static void Main()
         {
@@ -19,13 +19,12 @@ namespace Consumer
 
             try
             {
-                var connection = factory.CreateConnection();
-                using (connection)
+                using (var connection = factory.CreateConnection())
                 {
                     using (var channel = connection.CreateModel())
                     {
                         // Guaranteed delivery: durable: true
-                        channel.QueueDeclare(queue: Queue,
+                        channel.QueueDeclare(queue: QueueName,
                             durable: true,
                             exclusive: false,
                             autoDelete: false,
@@ -52,7 +51,7 @@ namespace Consumer
                         };
 
                         // Message acknowledgment: autoAck: false
-                        channel.BasicConsume(queue: Queue,
+                        channel.BasicConsume(queue: QueueName,
                             autoAck: false,
                             consumer: consumer);
 

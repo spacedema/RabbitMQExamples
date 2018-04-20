@@ -7,14 +7,20 @@ namespace Publisher
 {
     class Publisher
     {
-        private const string ExchangeName = "direct";
-        private const string ExchangeType = "direct";
+        private const string ExchangeName = "topic";
+        private const string ExchangeType = "topic";
 
         public enum PriorityEnum
         {
             Low,
             Normal,
             High
+        }
+
+        public enum UrgencyEnum
+        {
+            Urgent,
+            NonUrgent
         }
 
         static void Main()
@@ -35,8 +41,8 @@ namespace Publisher
                         for (var i = 1; i <= 100; i++)
                         {
                             Thread.Sleep(1000);
-                            var priority = GetPriority(i);
-                            SendMEssage($"Message #{i} with [{priority}] level", priority, channel);
+                            var priorityWithUrgency = GetPriority(i);
+                            SendMEssage($"Message #{i} with [{priorityWithUrgency}] level", priorityWithUrgency, channel);
                         }
                     }
                 }
@@ -55,14 +61,18 @@ namespace Publisher
         private static string GetPriority(int i)
         {
             var priority = $"{PriorityEnum.Low}";
+            var urgency = $"{UrgencyEnum.NonUrgent}";
 
-            if (i%3 == 0)
+            if (i%2 == 0)
+                urgency = $"{UrgencyEnum.Urgent}";
+
+            if (i % 3 == 0)
                 priority = $"{PriorityEnum.Normal}";
 
-            if (i%5 == 0)
+            if (i % 5 == 0)
                 priority = $"{PriorityEnum.High}";
 
-            return priority;
+            return $"{urgency}.{priority}";
         }
 
         private static void SendMEssage(string message, string priority, IModel channel)

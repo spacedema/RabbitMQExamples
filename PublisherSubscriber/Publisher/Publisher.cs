@@ -28,7 +28,7 @@ namespace Publisher
                         for (var i = 1; i <= 100; i++)
                         {
                             Thread.Sleep(2 * 1000);
-                            SendMEssage($"Message #{i}", channel);
+                            SendMessage($"Message #{i}", channel);
                         }
                     }
                 }
@@ -43,7 +43,7 @@ namespace Publisher
             }
         }
 
-        private static void SendMEssage(string message, IModel channel)
+        private static void SendMessage(string message, IModel channel)
         {
             var body = Encoding.UTF8.GetBytes(message);
             channel.BasicPublish(exchange: ExchangeName,

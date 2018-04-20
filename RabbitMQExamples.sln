@@ -7,12 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "ProducerConsume
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "ProducerConsumer\Consumer\Consumer.csproj", "{F69BB3F6-ABD2-4DD4-8507-9E5B48DE8436}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProducerConsumer", "ProducerConsumer", "{7B3333F3-4F1F-43EE-A0A3-FB4511FDB949}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.ProducerConsumer", "1.ProducerConsumer", "{7B3333F3-4F1F-43EE-A0A3-FB4511FDB949}"
 	ProjectSection(SolutionItems) = preProject
 		ProducerConsumer\consumerProducer.png = ProducerConsumer\consumerProducer.png
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublisherSubscriber", "PublisherSubscriber", "{95C27836-A394-4460-AE11-4DBD53054848}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.PublisherSubscriber", "2.PublisherSubscriber", "{95C27836-A394-4460-AE11-4DBD53054848}"
 	ProjectSection(SolutionItems) = preProject
 		PublisherSubscriber\fanout.png = PublisherSubscriber\fanout.png
 	EndProjectSection
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "PublisherSubsc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "PublisherSubscriber\Subscriber\Subscriber.csproj", "{343700FE-6045-4DB3-A34A-BB77D8DD3147}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Routing", "Routing", "{976C36B6-4604-4BA0-8236-9948AEE1EECC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Routing", "3.Routing", "{976C36B6-4604-4BA0-8236-9948AEE1EECC}"
 	ProjectSection(SolutionItems) = preProject
 		Routing\directExchange.png = Routing\directExchange.png
 	EndProjectSection
@@ -29,6 +29,26 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Routing\Publisher\Publisher.csproj", "{3302B211-604A-47BF-9715-8EB8025D321B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "Routing\Subscriber\Subscriber.csproj", "{CE644221-DF02-4B5C-B88D-A4240C483DE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Topics", "4.Topics", "{4E846B51-4FE6-4C81-BFBC-AAB652634BF7}"
+	ProjectSection(SolutionItems) = preProject
+		Topics\topicExchange.png = Topics\topicExchange.png
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Topics\Publisher\Publisher.csproj", "{DB4CBAF7-3A0B-4273-A9B7-6357055D5C4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "Topics\Subscriber\Subscriber.csproj", "{D9FD0558-4359-40EC-BA4E-6BB93E287CBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Rpc", "5.Rpc", "{B7D44634-EC9C-450F-906E-9C1305D953BC}"
+	ProjectSection(SolutionItems) = preProject
+		Rpc\rpc.png = Rpc\rpc.png
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpcServer", "Rpc\RpcServer\RpcServer.csproj", "{FE6E05CF-E251-4773-9FAD-2FAEA54CA4B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpcClient", "Rpc\RpcClient\RpcClient.csproj", "{ACBE188E-0A48-432C-A3C4-2B71B8428C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpcClient2", "Rpc\RpcClient2\RpcClient2.csproj", "{92224C1B-B0E0-471C-AC34-6708FE9DA039}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +80,26 @@ Global
 		{CE644221-DF02-4B5C-B88D-A4240C483DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE644221-DF02-4B5C-B88D-A4240C483DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE644221-DF02-4B5C-B88D-A4240C483DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB4CBAF7-3A0B-4273-A9B7-6357055D5C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB4CBAF7-3A0B-4273-A9B7-6357055D5C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB4CBAF7-3A0B-4273-A9B7-6357055D5C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB4CBAF7-3A0B-4273-A9B7-6357055D5C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9FD0558-4359-40EC-BA4E-6BB93E287CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9FD0558-4359-40EC-BA4E-6BB93E287CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9FD0558-4359-40EC-BA4E-6BB93E287CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9FD0558-4359-40EC-BA4E-6BB93E287CBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6E05CF-E251-4773-9FAD-2FAEA54CA4B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6E05CF-E251-4773-9FAD-2FAEA54CA4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6E05CF-E251-4773-9FAD-2FAEA54CA4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6E05CF-E251-4773-9FAD-2FAEA54CA4B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBE188E-0A48-432C-A3C4-2B71B8428C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBE188E-0A48-432C-A3C4-2B71B8428C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBE188E-0A48-432C-A3C4-2B71B8428C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBE188E-0A48-432C-A3C4-2B71B8428C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92224C1B-B0E0-471C-AC34-6708FE9DA039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92224C1B-B0E0-471C-AC34-6708FE9DA039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92224C1B-B0E0-471C-AC34-6708FE9DA039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92224C1B-B0E0-471C-AC34-6708FE9DA039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +111,10 @@ Global
 		{343700FE-6045-4DB3-A34A-BB77D8DD3147} = {95C27836-A394-4460-AE11-4DBD53054848}
 		{3302B211-604A-47BF-9715-8EB8025D321B} = {976C36B6-4604-4BA0-8236-9948AEE1EECC}
 		{CE644221-DF02-4B5C-B88D-A4240C483DE1} = {976C36B6-4604-4BA0-8236-9948AEE1EECC}
+		{DB4CBAF7-3A0B-4273-A9B7-6357055D5C4B} = {4E846B51-4FE6-4C81-BFBC-AAB652634BF7}
+		{D9FD0558-4359-40EC-BA4E-6BB93E287CBF} = {4E846B51-4FE6-4C81-BFBC-AAB652634BF7}
+		{FE6E05CF-E251-4773-9FAD-2FAEA54CA4B7} = {B7D44634-EC9C-450F-906E-9C1305D953BC}
+		{ACBE188E-0A48-432C-A3C4-2B71B8428C4A} = {B7D44634-EC9C-450F-906E-9C1305D953BC}
+		{92224C1B-B0E0-471C-AC34-6708FE9DA039} = {B7D44634-EC9C-450F-906E-9C1305D953BC}
 	EndGlobalSection
 EndGlobal

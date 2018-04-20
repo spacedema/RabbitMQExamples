@@ -6,7 +6,7 @@ namespace Producer
 {
     public class Send
     {
-        const string Queue = "task_queue3";
+        const string QueueName = "task_queue3";
 
         static void Main()
         {
@@ -22,7 +22,7 @@ namespace Producer
                     using (var channel = connection.CreateModel())
                     {
                         // Guaranteed delivery: durable: true
-                        channel.QueueDeclare(queue: Queue,
+                        channel.QueueDeclare(queue: QueueName,
                             durable: true,
                             exclusive: false,
                             autoDelete: false,
@@ -60,7 +60,7 @@ namespace Producer
         {
             var body = Encoding.UTF8.GetBytes(work);
             channel.BasicPublish(exchange: "",
-                            routingKey: Queue,
+                            routingKey: QueueName,
                             basicProperties: properties,
                             body: body);
 
