@@ -18,8 +18,8 @@ Example show how we can subscribe to a subset of the messages using direct excha
 
 ## 4. Topics
 Example shows how we can do routing based on miltiple criteria using topics exchange. The algorithm is similar to a direct one - a message sent with a particular routing key will be delivered to all the queues that are bound with a matching binding key. However there are two important special cases for binding keys:<br />
-* * (star) can substitute for exactly one word<br />
-* # (hash) can substitute for zero or more words<br />
+- \* (star) can substitute for exactly one word<br />
+- \# (hash) can substitute for zero or more words<br />
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/Topics/topicExchange.png)
 
 ## 5. Rpc
