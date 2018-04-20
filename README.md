@@ -23,5 +23,5 @@ Example shows how we can do routing based on miltiple criteria using topics exch
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/Topics/topicExchange.png)
 
 ## 5. Rpc
-Example shows how can we use RabbitMQ to build an RPC system: a client and a scalable RPC server.Dummy RPC service that returns Factorial<br />
+Example shows how can we use RabbitMQ to build an RPC system: a client and a scalable RPC server.Dummy RPC service that returns Factorial. RPC client sends an RPC request to RPC Server and blocks until the answer is received:<br />
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/Rpc/rpc.png)
