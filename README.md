@@ -13,7 +13,7 @@ Example shows how we can deliver a message to multiple consumers. Dummy broadcas
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/PublisherSubscriber/fanout.png)
 
 ## 3. Routing
-Example show how we can subscribe to a subset of the messages using direct exchange. The routing algorithm is simple - a message goes to the queues whose binding key equals routing key of the message<br />
+Example shows how we can subscribe to a subset of the messages using direct exchange. The routing algorithm is simple - a message goes to the queues whose binding key equals routing key of the message<br />
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/Routing/directExchange.png)
 
 ## 4. Topics
@@ -23,5 +23,5 @@ Example shows how we can do routing based on miltiple criteria using topics exch
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/Topics/topicExchange.png)
 
 ## 5. Rpc
-Example shows how can we use RabbitMQ to build an RPC system: a client and a scalable RPC server.Dummy RPC service that returns Factorial. RPC client sends an RPC request to RPC Server and blocks until the answer is received:<br />
+Example shows how can we use RabbitMQ to build an RPC system: a client and a scalable RPC server. Dummy RPC service that returns Factorial. RPC client sends an RPC request to RPC Server and blocks until the answer is received:<br />
 ![alt text](https://github.com/spacedema/RabbitMQExamples/blob/master/Rpc/rpc.png)
