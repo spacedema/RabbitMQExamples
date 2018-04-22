@@ -1,27 +1,29 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using RpcClient.Logger;
 
 namespace RpcClient2
 {
     public class RpcClient : IDisposable
     {
+        public EventHandler<FactorialResultEventArgs> ResultReceivedEventHandler;
+
+        public void OnResultReceivedEventHandler(string response)
+        {
+            ResultReceivedEventHandler?.Invoke(this, new FactorialResultEventArgs(response));
+        }
+
         private readonly IConnection _connection;
         private readonly IModel _channel;
         private readonly EventingBasicConsumer _consumer;
-        private readonly BlockingCollection<string> _respQueue = new BlockingCollection<string>();
         private readonly IBasicProperties _selfReplyProps;
         private const string QueueName = "rpc_client_2_queue";
         private const string ServerQueueName = "rpc";
         private readonly string _correlationId = "client_2_correlation_id";
-        private readonly ILogger _logger;
-
-        public RpcClient(ILogger logger)
+        
+        public RpcClient()
         {
-            _logger = logger;
             var factory = new ConnectionFactory { HostName = "localhost" };
 
             _connection = factory.CreateConnection();
@@ -48,14 +50,11 @@ namespace RpcClient2
             if (e.BasicProperties.CorrelationId != _correlationId)
                 return;
 
-            _respQueue.Add(response);
-            _logger.Log($" [.] Got {response}");
+            OnResultReceivedEventHandler(response);
         }
 
-        public string Call(string message)
+        public void Call(string message, Action<string> doSmthing)
         {
-            _logger.Log($" [x] Requesting factorial({message})");
-
             var messageBytes = Encoding.UTF8.GetBytes(message);
             _channel.BasicPublish(
                 exchange: string.Empty,
@@ -67,8 +66,6 @@ namespace RpcClient2
                 consumer: _consumer,
                 queue: QueueName,
                 autoAck: true);
-
-            return _respQueue.Take();
         }
 
         public void Dispose()
@@ -76,6 +73,15 @@ namespace RpcClient2
             _consumer.Received -= ConsumerReceived;
             _channel.Close();
             _connection.Close();
+        }
+    }
+
+    public class FactorialResultEventArgs : EventArgs
+    {
+        public string Response { get; private set; }
+        public FactorialResultEventArgs(string response)
+        {
+            Response = response;
         }
     }
 }

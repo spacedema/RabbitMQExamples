@@ -1,5 +1,4 @@
 ﻿using System;
-using RpcClient.Logger;
 
 namespace RpcClient2
 {
@@ -7,18 +6,21 @@ namespace RpcClient2
     {
         static void Main()
         {
-            using (var rpcClient = new RpcClient(new Logger()))
+            using (var rpcClient = new RpcClient())
             {
-                var response = rpcClient.Call("3");
-                DoSomethingWithResponse(response);
+                rpcClient.ResultReceivedEventHandler += (sender, e) =>
+                {
+                    Console.WriteLine($" [.] Got {e.Response}");
+                };
+
+                for (var i = 1; i < 5; i++)
+                {
+                    Console.WriteLine($" [x] Requesting factorial({i})");
+                    rpcClient.Call(i.ToString(), Console.WriteLine);
+                }
+
                 Console.ReadLine();
             }
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private static void DoSomethingWithResponse(string response)
-        {
-            
         }
     }
 }
